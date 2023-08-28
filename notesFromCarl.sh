@@ -28,3 +28,30 @@ conda --version
 conda install -c conda-forge mamba
 
 mamba --version
+
+
+
+idev --partition=centos7
+#export SINGULARITY_CACHEDIR=<lustre singularity cache dir.>
+module load singularity/3.9.0
+source /lustre/project/singularity_images/setup_cypress.sh
+#singularity pull docker://ghcr.io/chanzuckerberg/czid-workflows/czid-short-read-mngs-public:latest
+singularity shell -s /bin/bash czid-short-read-mngs-public_latest.sif
+#<now in shell>
+#export PATH=/share/apps/anaconda/3/2020.07/bin:$PATH
+export CONDA_ENVS_PATH=/lustre/project/taw/Wu_analysis/conda_envs
+#<create env.>
+#conda create -y -n sing-base python
+#<Install conda>
+#conda install -y -n sing-base -c defaults conda
+conda list -n sing-base 
+# <Only now at this point I'm getting an error...>
+#ResolvePackageNotFound:
+ # - python=3.1
+
+#<...otherwise proceed...>
+#<activate the env.>
+unset PYTHONPATH          
+source $CONDA_ENVS_PATH/sing-base/etc/profile.d/conda.sh
+conda activate sing-base
+# <at this point Huiyun gets the included error running "conda --version">
