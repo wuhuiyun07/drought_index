@@ -56,28 +56,16 @@ conda activate sing-base
 # <at this point Huiyun gets the included error running "conda --version">
 
 
-
-
-
-
 ####run after Hideki's email 5:52 pm 8/28/23
 
 idev74 ##on centos 7 node, 4 hours
-export CONDA_ENVS_PATH=/lustre/project/taw/Wu_analysis/conda_envs
-# module load anaconda3/2020.07
-unset PYTHONPATH
-source $CONDA_ENVS_PATH/wu-base/etc/profile.d/conda.sh
-conda activate wu-base
-#Check the version of ‘conda’
-conda --version
-# Setup environment:
 module load anaconda3/2023.07 
 module load singularity/3.9.0
 source activate miniwdl
 export MINIWDL_CFG=/share/apps/centos7/anaconda3/2023.07/envs/miniwdl/miniwdl.cfg
 source /lustre/project/singularity_images/setup_cypress.sh
 # Clone the czid-workflows repo:
-git clone https://github.com/chanzuckerberg/czid-workflows.git
+# git clone https://github.com/chanzuckerberg/czid-workflows.git
 cd czid-workflows
 # Run the viral pipeline:
 miniwdl run workflows/short-read-mngs/local_driver.wdl    \
